@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Биоритмы онлайн, калькулятор биоритмов</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="libs/Chart.bundle.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <label for="start">Дата рождения:</label>
+
+        <input id="dateOfBirth" type="date" id="start" onchange="onDateChange(this.value)">
+
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+    <script>
+        init();
+
+        function init() {
+            const value = localStorage.getItem('dateOfBirth');
+
+            const dateOfBirthEl = document.getElementById('dateOfBirth');
+            dateOfBirthEl.value = value;
+
+            if (value) {
+                calculate(new Date(value));
+            }
+        }
+
+        function onDateChange(value) {
+            console.log(value);
+            calculate(new Date(value));
+            localStorage.setItem('dateOfBirth', value);
+        }
+
+        function calculate(dateOfBirth) {
+            const dateNow = new Date();
+            const currentDay = new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate());
+
+            const daysFromBirth = ((currentDay - dateOfBirth) / 24 / 60 / 60 / 1000) + 1;
+            console.log(daysFromBirth);
+
+            let labels = [];
+            let physical = [];
+            let emotional = [];
+            let intellectual = [];
+            for (let i = 0; i < 31; i++) {
+                labels.push(new Date(+currentDay + (i * 24 * 60 * 60 * 1000)));
+
+                physical.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth + i) / 23)) * 100));
+                emotional.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth + i) / 28)) * 100));
+                intellectual.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth + i) / 33)) * 100));
+            }
+
+            var ctx = document.getElementById('myChart');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [
+                        {
+                            data: physical,
+                            label: "Физический биоритм, %",
+                            borderColor: "#4caf50",
+                            fill: false
+                        },
+                        {
+                            data: emotional,
+                            label: "Эмоциональный биоритм, %",
+                            borderColor: "#f44336",
+                            fill: false
+                        },
+                        {
+                            data: intellectual,
+                            label: "Интеллектуальный биоритм, %",
+                            borderColor: "#3f51b5",
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Графики ваших биоритмов на месяц вперед'
+                    },
+                    scales: {
+                        xAxes: [{
+                            type: 'time',
+                            time: {
+                                unit: 'day'
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Уровень (%)'
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>
