@@ -34,6 +34,13 @@
             position: relative;
         }
 
+        .default-text {
+            position: absolute;
+            left: 50%;
+            top: 20%;
+            transform: translate(-50%, 0);
+        }
+
         @media (max-width: 480px) {
             .chart-container {
                 height: 40vh;
@@ -84,6 +91,25 @@
 
             if (value) {
                 calculate(new Date(value));
+            } else {
+                showDefaultState();
+            }
+        }
+
+        function showDefaultState() {
+            const defalultEl = document.createElement('span');
+            defalultEl.textContent = 'Пожалуйста укажите дату рождения';
+            defalultEl.classList.add('default-text');
+
+            const targetEl = document.querySelector('.chart-container');
+            targetEl.appendChild(defalultEl);
+        }
+
+        function removeDefaultState() {
+            const defalultEl = document.querySelector('.default-text');
+
+            if (defalultEl) {
+                defalultEl.remove();
             }
         }
 
@@ -115,9 +141,9 @@
         }
 
         function onDateChange(value) {
-            console.log(value);
             calculate(new Date(value));
             localStorage.setItem('dateOfBirth', value);
+            removeDefaultState();
         }
 
         function calculate(dateOfBirth) {
@@ -125,7 +151,6 @@
             const currentDay = new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate());
 
             const daysFromBirth = ((currentDay - dateOfBirth) / 24 / 60 / 60 / 1000) + 1;
-            console.log(daysFromBirth);
 
             let labels = [];
             let physical = [];
