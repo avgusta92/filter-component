@@ -7,7 +7,9 @@
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <script src="libs/Chart.bundle.min.js"></script>
+    <script src="libs/Chart.min.js"></script>
+    <script src="libs/moment-with-locales.min.js"></script>
+    <script src="libs/chartjs-adapter-moment.min.js"></script>
 </head>
 
 <body>
@@ -55,6 +57,8 @@
         init();
 
         function init() {
+            moment.locale('ru');
+
             addLineWithLineChartType();
 
             const value = localStorage.getItem('dateOfBirth');
