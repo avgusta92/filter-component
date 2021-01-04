@@ -14,3 +14,7 @@
   for = "*.ico"
   [headers.values]
     Cache-Control = "public, max-age=3600"
+[[headers]]
+  for = "*.webmanifest"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
