@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "static-server dist -o",
+    "start": "npm run run:server & npm run run:scss",
+    "run:server": "static-server dist -o",
+    "run:scss": "node-sass -w ./dist/css/style.scss ./dist/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +24,7 @@
     "chartjs-adapter-moment": "^0.1.2"
   },
   "devDependencies": {
+    "node-sass": "^5.0.0",
     "static-server": "^2.2.1"
   }
 }

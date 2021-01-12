@@ -1,18 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="utf-8">
     <title>Биоритмы онлайн, калькулятор биоритмов</title>
 
-    <meta name="Description" content="Воспользуйтесь онлайн-калькулятором для расчета ваших биоритмов. Бесплатно">
-    <meta name="keywords"
-        content="Биоритмы, онлайн, калькулятор, ритмы, расчет, часы, эмоциональный, физический, интеллектуальный, биологический, бесплатно">
-
     <base href="/">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="theme-color" content="#E6EBDC">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <meta name="Description"
+          content="Воспользуйтесь онлайн-калькулятором для расчета ваших биоритмов. Бесплатно">
+    <meta name="keywords"
+          content="Биоритмы, онлайн, калькулятор, ритмы, расчет, часы, эмоциональный, физический, интеллектуальный, биологический, бесплатно">
+
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8"/>
+
+    <meta name="theme-color"
+          content="#E6EBDC">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+<!--    <link href="https://fonts.googleapis.com/css?family=Exo+2:100,200,300,400,500,600,700,800,900&display=swap&subset=cyrillic,cyrillic-ext"-->
+<!--          rel="stylesheet">-->
 
     <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
@@ -20,11 +31,16 @@
     <link rel="icon" type="image/png" sizes="192x192" href="icons/android-chrome-192x192.png">
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 
-    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
 
     <script src="libs/Chart.min.js"></script>
     <script src="libs/moment-with-locales.min.js"></script>
     <script src="libs/chartjs-adapter-moment.min.js"></script>
+
+    <script async src="js/main.js" type="text/javascript"></script>
 
     <script data-ad-client="ca-pub-3744769236143082" async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -38,211 +54,254 @@
 
         gtag('config', 'G-Q71E6E6LTE');
     </script>
+
 </head>
 
 <body>
-    <style>
-        .chart-container {
-            position: relative;
-        }
 
-        .default-text {
-            position: absolute;
-            left: 50%;
-            top: 20%;
-            transform: translate(-50%, 0);
-        }
-
-        @media (max-width: 480px) {
-            .chart-container {
-                height: 40vh;
-            }
-        }
-
-        @media (min-width:481px) and (max-width:768px) {
-            .chart-container {
-                height: 50vh;
-            }
-        }
-
-        @media (min-width:769px) {
-            .chart-container {
-                height: 50vh;
-            }
-        }
-
-        @media (min-width:1025px) {
-            .chart-container {
-                height: 50vh;
-                width: 80vw;
-                margin: auto;
-            }
-        }
-    </style>
-    <div>
-        <label for="dateOfBirth">Дата рождения:</label>
-
-        <input id="dateOfBirth" type="date" id="start" onchange="onDateChange(this.value)">
-
-        <div class="chart-container">
-            <canvas id="myChart"></canvas>
+    <header class="header-wrap">
+        <nav class="nav-bar">
+            <nav class="nav-bar-wrap">
+                <div class="heading-logo-wrap">
+                    <img class="heading-logo" src="icons/android-chrome-512x512.png" alt="logo bioritms">
+                    <p class="heading-company-name">Bioritms</p>
+                </div>
+            </nav>
+        </nav>
+        <div class="header-text">
+            <div class="header-text-wrap">
+                <h1 class="header-text-heading">Калькулятор биоритмов</h1>
+                <p class="header-text-about">
+                    Онлайн калькулятор расчета биоритмов человека на конкретный день по дате рождения.
+                    Данный калькулятор позволяет рассчитать биоритмы человека, влияющие на его самочувствие
+                    и психологическое состояние, на основании даты рождения. Калькулятор биоритмов рассчитывает
+                    физическую, эмоциональную и интеллектуальную активность человека на определенный выбранный день
+                </p>
+            </div>
         </div>
-    </div>
-    <script>
-        init();
+    </header>
 
-        function init() {
-            moment.locale('ru');
+    <main class="main-content">
 
-            addLineWithLineChartType();
+        <div class="add-birthday-block">
 
-            const value = localStorage.getItem('dateOfBirth');
+            <div class="add-birthday-advertising add-birthday-advertising-left"></div>
 
-            const dateOfBirthEl = document.getElementById('dateOfBirth');
-            dateOfBirthEl.value = value;
 
-            if (value) {
-                calculate(new Date(value));
-            } else {
-                showDefaultState();
-            }
-        }
+                <div class="card-style add-birthday-wrap">
+                    <form onsubmit="return onSubmit(this)" class="add-birthday-content" id="form-add-birthday">
+                        <h2>Введите вашу дату рождения:</h2>
 
-        function showDefaultState() {
-            const defalultEl = document.createElement('span');
-            defalultEl.textContent = 'Пожалуйста укажите дату рождения';
-            defalultEl.classList.add('default-text');
+                        <div class="birthday-inputs-block">
+                            <div class="input-wrap input-wrap-day">
+                                <label class="input-label" for="day">День:</label>
+                                <input type="number"
+                                       class="input-date"
+                                       placeholder="01"
+                                       id="day"
+                                       name="day"
+                                       required
+                                       minlength="4"
+                                       maxlength="8"
+                                       size="10"
 
-            const targetEl = document.querySelector('.chart-container');
-            targetEl.appendChild(defalultEl);
-        }
+                                >
+                            </div>
+                            <div class="input-wrap input-wrap-month">
+                                <label class="input-label" for="month">Месяц:</label>
+                                <input type="number"
+                                       class="input-date"
+                                       placeholder="08"
+                                       id="month"
+                                       name="month"
+                                       required
+                                       minlength="4"
+                                       maxlength="8"
+                                       size="10"
+                                >
+                            </div>
+                            <div class="input-wrap input-wrap-year">
+                                <label class="input-label" for="year">День:</label>
+                                <input type="number"
+                                       class="input-date"
+                                       placeholder="1890"
+                                       id="year"
+                                       name="year"
+                                       required
+                                       minlength="4"
+                                       maxlength="8"
+                                       size="10"
 
-        function removeDefaultState() {
-            const defalultEl = document.querySelector('.default-text');
+                                >
+                            </div>
+                        </div>
 
-            if (defalultEl) {
-                defalultEl.remove();
-            }
-        }
+                        <div class="submit-buttons-block">
+                            <input type="submit" value="Рассчитать" class="buttons-style submit-button" id="submit-button">
+                            <button type="reset" class="buttons-style reset-button" id="reset-button"
+                                    onclick="">Сбросить</button>
+                        </div>
 
-        function addLineWithLineChartType() {
-            Chart.defaults.LineWithLine = Chart.defaults.line;
-            Chart.controllers.LineWithLine = Chart.controllers.line.extend({
-                draw: function (ease) {
-                    Chart.controllers.line.prototype.draw.call(this, ease);
+                    </form>
+                </div>
 
-                    if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
-                        var activePoint = this.chart.tooltip._active[0],
-                            ctx = this.chart.ctx,
-                            x = activePoint.tooltipPosition().x,
-                            topY = this.chart.legend.bottom,
-                            bottomY = this.chart.chartArea.bottom;
+                <div class="add-birthday-advertising add-birthday-advertising-right"></div>
 
-                        // draw line
-                        ctx.save();
-                        ctx.beginPath();
-                        ctx.moveTo(x, topY);
-                        ctx.lineTo(x, bottomY);
-                        ctx.lineWidth = 1;
-                        ctx.strokeStyle = '#00000070';
-                        ctx.stroke();
-                        ctx.restore();
-                    }
-                }
-            });
-        }
 
-        function onDateChange(value) {
-            calculate(new Date(value));
-            localStorage.setItem('dateOfBirth', value);
-            removeDefaultState();
-        }
 
-        function calculate(dateOfBirth) {
-            const dateNow = new Date();
-            const currentDay = new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate());
+        </div>
 
-            const daysFromBirth = ((currentDay - dateOfBirth) / 24 / 60 / 60 / 1000) + 1;
+        <div class="result" id="result">
 
-            let labels = [];
-            let physical = [];
-            let emotional = [];
-            let intellectual = [];
-            for (let i = 0; i < 31; i++) {
-                labels.push(new Date(+currentDay + (i * 24 * 60 * 60 * 1000)));
+            <div class="result-chart-block">
+                <div class="card-style result-wrap">
 
-                physical.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth + i) / 23)) * 100));
-                emotional.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth + i) / 28)) * 100));
-                intellectual.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth + i) / 33)) * 100));
-            }
+                    <div class="result-chart-heading">
+                        <h2>График ваших биоритмов на месяц вперед:</h2>
+                        <div class="result-view">
+                            <span>Отобразить биоритмы:</span>
 
-            var ctx = document.getElementById('myChart');
-            var myChart = new Chart(ctx, {
-                type: 'LineWithLine',
-                data: {
-                    labels,
-                    datasets: [
-                        {
-                            data: physical,
-                            label: "Физический биоритм, %",
-                            borderColor: "#4caf50",
-                            fill: false
-                        },
-                        {
-                            data: emotional,
-                            label: "Эмоциональный биоритм, %",
-                            borderColor: "#f44336",
-                            fill: false
-                        },
-                        {
-                            data: intellectual,
-                            label: "Интеллектуальный биоритм, %",
-                            borderColor: "#3f51b5",
-                            fill: false
-                        }
-                    ]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    locale: 'ru',
-                    title: {
-                        display: true,
-                        text: 'Графики ваших биоритмов на месяц вперед'
-                    },
-                    scales: {
-                        xAxes: [{
-                            type: 'time',
-                            time: {
-                                unit: 'day',
-                                tooltipFormat: 'LL'
-                            }
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Уровень (%)'
-                            }
-                        }]
-                    },
-                    elements: {
-                        point: {
-                            radius: 0
-                        }
-                    },
-                    tooltips: {
-                        mode: 'label',
-                        intersect: false
-                    },
-                    hover: {
-                        mode: 'label',
-                        intersect: false,
-                        animationDuration: 200
-                    },
-                }
-            });
-        }
+                            <button
+                                    class="button-result-view button-result-view-selected"
+                                    id="result-view-chart"
+                                    onclick="onResultView(this)"
+                            >в виде графика</button>
+                            <button
+                                    class="button-result-view"
+                                    id="result-view-table"
+                                    onclick="onResultView(this)"
+                            >в виде таблицы</button>
+                        </div>
+                    </div>
 
-    </script>
+                    <div class="chart" id="chart">
+                        <canvas id="myChart"></canvas>
+                    </div>
+
+
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th class="table-description-date">Дата</th>
+                                <th>Физический биоритм</th>
+                                <th>Эмоциональный биоритм</th>
+                                <th>Интеллектуальный биоритм</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-table"></tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="result-recommendation-block">
+                <div class="card-style result-recommendation-wrap">
+                    <h2>Персональные рекомендации на сегодня 4 Января 2021:</h2>
+
+                    <div class="result-recommendation-text result-recommendation-physical">
+                        <h3> Физический биоритм <span>-94.5%</span> (<span>18</span> день)</h3>
+                        <p> Совет на сегодня: на рабочем месте можно вздремнуть.
+                            Но никак не храпеть на весь офис, пугая всё и вся!
+                        </p>
+                    </div>
+
+                    <div class="result-recommendation-text result-recommendation-emotional">
+                        <h3> Эмоциональный биоритм <span>-94.5%</span> (<span>18</span> день)</h3>
+                        <p> Совет на сегодня: на рабочем месте можно вздремнуть.
+                            Но никак не храпеть на весь офис, пугая всё и вся!
+                        </p>
+                    </div>
+
+                    <div class="result-recommendation-text result-recommendation-intellectual">
+                        <h3> Интеллектуальный биоритм <span>-94.5%</span> (<span>18</span> день)</h3>
+                        <p> Совет на сегодня: на рабочем месте можно вздремнуть.
+                            Но никак не храпеть на весь офис, пугая всё и вся!
+                        </p>
+                    </div>
+
+                </div>
+                <div class="result-recommendation-advertising"></div>
+            </div>
+
+        </div>
+
+        <div class="about-algorithm-block">
+
+            <div class="about-physical-and-emotional">
+                <div class="card-style about-content about-physical">
+                    <h2>Физический цикл:</h2>
+
+                    <div>
+                        <h3> Физический биоритм человека представлен циклом, длительность которого составляет 23 дня.</h3>
+                        <p>
+                            Первая половина цикла составляет положительный период цикла, а вторая – отрицательный.
+                            Кроме того, нужно учитывать наличие критических дней при смене одного цикла другим и
+                            при переходе от одной фазы к другой.
+                        </p>
+                        <p>
+                            Физический цикл биоритмов человека определяет возможности, связанные с функционированием
+                            организма человека. Другими словами, положительная фаза этого цикла сопровождается отличным
+                            самочувствием и успешным исходом тех дел, которые требуют физических усилий.
+                        </p>
+                        <p>
+                            Негативный период цикла, а также критические дни – то время, когда у человека все валится из рук,
+                            и довольно тяжело найти в себе силы для решения повседневных задач.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card-style about-content about-emotional">
+                    <h2>Эмоциональный цикл:</h2>
+
+                    <div>
+                        <h3> Физический биоритм человека представлен циклом, длительность которого составляет 23 дня.</h3>
+                        <p>
+                            <span style="white-space:pre-wrap;">В критические дни эмоционального биоритма ваше настроение колеблется между крайностями, от которых один шаг до стресса:<br>При переходе в позитивную фазу вы склонны к неуместным шуткам и резким замечаниям. Чрезмерная уверенность в себе тоже может сыграть свою роль: возможно, вы взвалите на себя ответственность, которая вам не нужна.</span>
+                            <br><span style="white-space:pre-wrap;"><br>Что-то не так и вы впадаете в бешенство, когда биоритм меняется на отрицательную фазу. Если вы подчиненный, то, возможно, в результате окажетесь за дверью без выходного пособия, а если начальник &mdash; сами выгоните подчиненного за тривиальное замечание, которое вам в теперешнем состоянии покажется гнуснейшим оскорблением.</span>
+                            <br><span style="white-space:pre-wrap;"><br>В эмоциональном цикле критические дни биоритмов представлены неуравновешенным психическим состоянием, &nbsp;утратой способности адекватно воспринимать происходящие события. Именно в такие моменты чаще всего возникают острые конфликтные ситуации, а также ситуации криминального характера.Влияние положительной фазы эмоционального биоритма можно попробовать охарактеризовать одним коротким, но емким словом &mdash; энтузиазм. Это то состояние, когда вы чувствуете себя окрыленным.<br><br>По мере перехода эмоционального биоритма в негативную фазу, вы будете становиться менее общительным, но более унылым, раздражительным и чувствительным к вещам, которые обычно вас особо не тревожили. Это период, когда человек особенно склонен оказываться в неловких ситуациях.</span></p>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="about-intellectual">
+                <div class="card-style about-content">
+                    <h2>Интеллектуальный цикл:</h2>
+
+                    <div>
+                        <h3>
+                            Здесь также наблюдается разделение на положительный и отрицательный периоды,
+                            разделяемые критическими днями.
+                        </h3>
+                        <p>Первая половина этого цикла (16,5 дней) &mdash; лучшее время, когда работники умственного труда (учащиеся, ученые, руководители и др.) в наибольшей мере способны к восприятию новых знаний, глубокому анализу информации, рождению новых гипотез и т.п.. Мы все знаем, что порой обучение происходит на одном дыхании, а в другое время &mdash; приходится зубрить часами напролет, чтобы запомнить нечто. Это одно из проявлений интеллектуального биоритма. В первой половине цикла информация легко воспринимается и усваивается, это прайм-тайм для творческого мышления, достижения прогресса в новых предметных областях, быстрого решения задач, требующих точной и немедленной психической реакции. Этот период считается лучшим для принятия решения о смене должности или работы.</p>
+
+                        <p>Во второй половине этого биоритма (также 16,5 дней) способность логически мыслить несколько уменьшается. Это не значит, что Вы автоматически теряете 10 очков уровня IQ: мозг просто говорит, что ему нужно время для обработки данных, полученных в первом полупериоде. Теперь Ваш разум хочет немного отдохнуть, чтобы снова запастись энергией. Это время, когда несколько труднее продуцировать новые идеи, творчески мыслить или заниматься умственными упражнениями, а также заниматься прочей деятельностью, где требуется концентрация, память и быстрая психическая реакция. Сейчас Вам, вероятнее всего, стоит заняться пересмотром ранее полученной информации. Вторая половина интеллектуального цикла является лучшим временем для практических занятий вроде решения типовых задачек или редактирования ранее написанной Вами статьи. В низкой фазе этого цикла на первое место выходит Ваша интуиция и прошлый опыт &mdash; многие действия выполняются как-бы &laquo;на автомате&raquo;.</p>
+
+                        <p>Положительный период &ndash; характеризуется остротой ума, легким решением всех умственных задач, а также реализацией самых честолюбивых планов. В такие дни человек чувствует недостаток интеллектуальной нагрузки и пытается снизить дискомфорт чтением книг, разгадыванием кроссвордов или другими способами.</p>
+
+                        <p>Отрицательный период &ndash; не лучшее время для активной мозговой деятельности, поскольку даже самые простые задачи могут показаться невероятно сложными, и займут в несколько раз больше времени, чем обычно. Концентрация снижена, часто допускаются ошибки.</p>
+
+                        <p>Критические периоды интеллектуального биоритма приходятся на 1-й и 17-й дни. В эти дни принятие важных решений, тем более таких, что могут внести коррективы в жизненные цели, лучше всего отложить. Если вы знаете, что это все же придется сделать, то лучше подготовиться и рассмотреть все стороны вопросы заранее.</p>
+
+                        <p>Критические дни интеллектуального цикла биоритма человека становятся причиной серьезных ошибок. Такие моменты лучше провести в состоянии покоя, ни в коем случае не браться за решение важных дел, так как в голове &ndash; сплошная путаница. Невозможно правильно оценить ситуацию и сделать верные выводы.</p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+    </main>
+
+    <footer>
+        <div class="footer-block"></div>
+    </footer>
+
 </body>
 
 </html>
