@@ -62,10 +62,15 @@
     <header class="header-wrap">
         <nav class="nav-bar">
             <nav class="nav-bar-wrap">
-                <div class="heading-logo-wrap">
-                    <img class="heading-logo" src="icons/android-chrome-512x512.png" alt="logo bioritms">
-                    <p class="heading-company-name">Bioritms</p>
-                </div>
+                <a href="/">
+                    <div class="heading-logo-wrap">
+                        <img class="heading-logo"
+                             src="icons/android-chrome-512x512.png"
+                             alt="logo bioritms"
+                        >
+                        <span class="heading-company-name">Bioritms</span>
+                    </div>
+                </a>
             </nav>
         </nav>
         <div class="header-text">
@@ -94,52 +99,56 @@
 
                         <div class="birthday-inputs-block">
                             <div class="input-wrap input-wrap-day">
-                                <label class="input-label" for="day">День:</label>
                                 <input type="number"
-                                       class="input-date"
-                                       placeholder="01"
+                                       class="input-birthday"
+                                       placeholder="День"
                                        id="day"
                                        name="day"
                                        required
-                                       minlength="4"
-                                       maxlength="8"
+                                       minlength="2"
+                                       maxlength="2"
                                        size="10"
 
                                 >
                             </div>
                             <div class="input-wrap input-wrap-month">
-                                <label class="input-label" for="month">Месяц:</label>
                                 <input type="number"
-                                       class="input-date"
-                                       placeholder="08"
+                                       class="input-birthday"
+                                       placeholder="Месяц"
                                        id="month"
                                        name="month"
                                        required
-                                       minlength="4"
-                                       maxlength="8"
+                                       minlength="2"
+                                       maxlength="2"
                                        size="10"
                                 >
                             </div>
                             <div class="input-wrap input-wrap-year">
-                                <label class="input-label" for="year">День:</label>
                                 <input type="number"
-                                       class="input-date"
-                                       placeholder="1890"
+                                       class="input-birthday"
+                                       placeholder="Год"
                                        id="year"
                                        name="year"
                                        required
                                        minlength="4"
-                                       maxlength="8"
+                                       maxlength="4"
                                        size="10"
-
                                 >
                             </div>
                         </div>
 
                         <div class="submit-buttons-block">
-                            <input type="submit" value="Рассчитать" class="buttons-style submit-button" id="submit-button">
-                            <button type="reset" class="buttons-style reset-button" id="reset-button"
-                                    onclick="">Сбросить</button>
+                            <input type="submit"
+                                   value="Рассчитать"
+                                   class="buttons-style submit-button"
+                                   id="submit-button"
+                            >
+                            <input type="button"
+                                   value="Сбросить"
+                                   class="buttons-style reset-button"
+                                   id="reset-button"
+                                   onclick="onReset(this)"
+                            >
                         </div>
 
                     </form>
@@ -161,16 +170,18 @@
                         <div class="result-view">
                             <span>Отобразить биоритмы:</span>
 
-                            <button
-                                    class="button-result-view button-result-view-selected"
-                                    id="result-view-chart"
-                                    onclick="onResultView(this)"
-                            >в виде графика</button>
-                            <button
-                                    class="button-result-view"
-                                    id="result-view-table"
-                                    onclick="onResultView(this)"
-                            >в виде таблицы</button>
+                            <div class="button-result-view-wrap">
+                                <button
+                                        class="button-result-view button-result-view-selected"
+                                        id="result-view-chart"
+                                        onclick="onResultView(this)"
+                                >в виде графика</button>
+                                <button
+                                        class="button-result-view"
+                                        id="result-view-table"
+                                        onclick="onResultView(this)"
+                                >в виде таблицы</button>
+                            </div>
                         </div>
                     </div>
 
@@ -183,9 +194,9 @@
                         <thead>
                             <tr>
                                 <th class="table-description-date">Дата</th>
-                                <th>Физический биоритм</th>
-                                <th>Эмоциональный биоритм</th>
-                                <th>Интеллектуальный биоритм</th>
+                                <th>Физический</th>
+                                <th>Эмоциональный</th>
+                                <th>Интеллектуальный</th>
                             </tr>
                         </thead>
                         <tbody id="tbody-table"></tbody>
@@ -196,24 +207,24 @@
 
             <div class="result-recommendation-block">
                 <div class="card-style result-recommendation-wrap">
-                    <h2>Персональные рекомендации на сегодня 4 Января 2021:</h2>
+                    <h2>Персональные рекомендации на сегодня <span id="date-today"></span>:</h2>
 
-                    <div class="result-recommendation-text result-recommendation-physical">
-                        <h3> Физический биоритм <span>-94.5%</span> (<span>18</span> день)</h3>
+                    <div class="result-recommendation-text">
+                        <h3> Эмоциональный биоритм <span id="result-recommendation-physical"></span> (<span>18</span> день)</h3>
                         <p> Совет на сегодня: на рабочем месте можно вздремнуть.
                             Но никак не храпеть на весь офис, пугая всё и вся!
                         </p>
                     </div>
 
-                    <div class="result-recommendation-text result-recommendation-emotional">
-                        <h3> Эмоциональный биоритм <span>-94.5%</span> (<span>18</span> день)</h3>
+                    <div class="result-recommendation-text">
+                        <h3> Эмоциональный биоритм <span id="result-recommendation-emotional"></span> (<span>18</span> день)</h3>
                         <p> Совет на сегодня: на рабочем месте можно вздремнуть.
                             Но никак не храпеть на весь офис, пугая всё и вся!
                         </p>
                     </div>
 
-                    <div class="result-recommendation-text result-recommendation-intellectual">
-                        <h3> Интеллектуальный биоритм <span>-94.5%</span> (<span>18</span> день)</h3>
+                    <div class="result-recommendation-text">
+                        <h3> Интеллектуальный биоритм <span id="result-recommendation-intellectual"></span> (<span>18</span> день)</h3>
                         <p> Совет на сегодня: на рабочем месте можно вздремнуть.
                             Но никак не храпеть на весь офис, пугая всё и вся!
                         </p>
