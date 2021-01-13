@@ -221,12 +221,6 @@ function calculate(dateOfBirth) {
                         tooltipFormat: 'LL'
                     }
                 }],
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Уровень (%)'
-                    }
-                }]
             },
             elements: {
                 point: {
