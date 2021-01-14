@@ -237,7 +237,8 @@ function calculate(dateOfBirth) {
                 animationDuration: 200
             },
             legend: {
-                position: 'bottom'
+                position: 'bottom',
+                align: "start"
             }
         }
     });
