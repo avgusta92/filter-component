@@ -1,6 +1,6 @@
-let greenColor = "#2bd284";
-let redColor = "#f12767";
-let bluColor = "#0190FF";
+let greenColor = "#279B4F";
+let redColor = "#DF1152";
+let bluColor = "#455FC8";
 
 init();
 
@@ -26,6 +26,7 @@ function init() {
     //НАЖИМАЕМ КНОПКУ SUBMIT
     document.getElementById("submit-button").click();
 
+    // ДОБАВЛЯЮ ФУНКЦИЮ КОТОРАЯ БУДЕТ АВТОМАТИЧЕСКИ ФОКУСИРОВАТЬ СЛЕДУЮЩИЙ ИНПУТ
     addAutoFocusingNextInput();
 }
 
@@ -88,7 +89,6 @@ function onResultView(value) {
 
 }
 
-// ДОБАВЛЯЮ ФУНКЦИЮ КОТОРАЯ БУДЕТ АВТОМАТИЧЕСКИ ФОКУСИРОВАТЬ СЛЕДУЮЩИЙ ИНПУТ
 function addAutoFocusingNextInput() {
     const container = document.getElementsByClassName("birthday-inputs-block")[0];
     container.onkeyup = function(e) {
