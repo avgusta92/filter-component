@@ -120,27 +120,27 @@ function calculate(dateOfBirth) {
 
         let tablePhysical = document.createElement('td');
         if(physical[i] < 0) {
-            tablePhysical.style.color = '#FE015C';
+            tablePhysical.style.color = '#f35370';
         } else {
-            tablePhysical.style.color = '#09cc6e';
+            tablePhysical.style.color = '#54c98b';
         }
         tablePhysical.innerHTML = physical[i] + '%';
         newTableLine.appendChild(tablePhysical);
 
         let tableEmotional = document.createElement('td');
         if(emotional[i] < 0) {
-            tableEmotional.style.color = '#FE015C';
+            tableEmotional.style.color = '#f35370';
         } else {
-            tableEmotional.style.color = '#09CC6E';
+            tableEmotional.style.color = '#54c98b';
         }
         tableEmotional.innerHTML = emotional[i] + '%';
         newTableLine.appendChild(tableEmotional);
 
         let tableIntellectual = document.createElement('td');
         if(intellectual[i] < 0) {
-            tableIntellectual.style.color = '#FE015C';
+            tableIntellectual.style.color = '#f35370';
         } else {
-            tableIntellectual.style.color = '#09CC6E';
+            tableIntellectual.style.color = '#54c98b';
         }
         tableIntellectual.innerHTML = intellectual[i] + '%';
         newTableLine.appendChild(tableIntellectual);
@@ -159,27 +159,27 @@ function calculate(dateOfBirth) {
     headingRecommendationPhysical.innerHTML = physical[1] + '%';
 
     if(physical[1] < 0) {
-        headingRecommendationPhysical.style.color = '#FE015C';
+        headingRecommendationPhysical.style.color = '#f35370';
     } else {
-        headingRecommendationPhysical.style.color = '#09CC6E';
+        headingRecommendationPhysical.style.color = '#54c98b';
     }
 
     let headingRecommendationEmotional = document.getElementById('result-recommendation-emotional');
     headingRecommendationEmotional.innerHTML = emotional[1] + '%';
 
     if(emotional[1] < 0) {
-        headingRecommendationEmotional.style.color = '#FE015C';
+        headingRecommendationEmotional.style.color = '#f35370';
     } else {
-        headingRecommendationEmotional.style.color = '#09CC6E';
+        headingRecommendationEmotional.style.color = '#54c98b';
     }
 
     let headingRecommendationIntellectual = document.getElementById('result-recommendation-intellectual');
     headingRecommendationIntellectual.innerHTML = intellectual[1] + '%';
 
     if(intellectual[1] < 0) {
-        headingRecommendationIntellectual.style.color = '#FE015C';
+        headingRecommendationIntellectual.style.color = '#f35370';
     } else {
-        headingRecommendationIntellectual.style.color = '#09CC6E';
+        headingRecommendationIntellectual.style.color = '#54c98b';
     }
 
 
@@ -193,19 +193,19 @@ function calculate(dateOfBirth) {
                 {
                     data: physical,
                     label: "Физический биоритм, %",
-                    borderColor: "#4caf50",
+                    borderColor: "#68c298",
                     fill: false
                 },
                 {
                     data: emotional,
                     label: "Эмоциональный биоритм, %",
-                    borderColor: "#f44336",
+                    borderColor: "#8a81ce",
                     fill: false
                 },
                 {
                     data: intellectual,
                     label: "Интеллектуальный биоритм, %",
-                    borderColor: "#3f51b5",
+                    borderColor: "#78b9c9",
                     fill: false
                 }
             ]
