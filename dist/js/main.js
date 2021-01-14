@@ -236,6 +236,9 @@ function calculate(dateOfBirth) {
                 intersect: false,
                 animationDuration: 200
             },
+            legend: {
+                position: 'bottom'
+            }
         }
     });
 }
@@ -251,14 +254,15 @@ function addLineWithLineChartType() {
                 var activePoint = this.chart.tooltip._active[0],
                     ctx = this.chart.ctx,
                     x = activePoint.tooltipPosition().x,
-                    topY = this.chart.legend.bottom,
+                    topY = this.chart.chartArea.top,
                     bottomY = this.chart.chartArea.bottom;
 
+                // draw line
                 ctx.save();
                 ctx.beginPath();
                 ctx.moveTo(x, topY);
                 ctx.lineTo(x, bottomY);
-                ctx.lineWidth = 1;
+                ctx.lineWidth = 0.5;
                 ctx.strokeStyle = '#00000070';
                 ctx.stroke();
                 ctx.restore();
@@ -266,6 +270,3 @@ function addLineWithLineChartType() {
         }
     });
 }
-
-
-
