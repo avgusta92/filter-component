@@ -8,7 +8,6 @@
     <base href="/">
 
 
-
     <meta name="Description"
           content="Воспользуйтесь онлайн-калькулятором для расчета ваших биоритмов. Бесплатно">
     <meta name="keywords"
@@ -58,8 +57,9 @@
 </head>
 
 <body>
-
+<!-- HEDER (NAW BAR + TEXT ABOUT) -->
     <header class="header-wrap">
+
         <nav class="nav-bar">
             <nav class="nav-bar-wrap">
                 <a href="/">
@@ -73,6 +73,7 @@
                 </a>
             </nav>
         </nav>
+
         <div class="header-text">
             <div class="header-text-wrap">
                 <h1 class="header-text-heading">Калькулятор биоритмов</h1>
@@ -84,71 +85,71 @@
                 </p>
             </div>
         </div>
+
     </header>
 
     <main class="main-content">
 
+        <!--  BLOCK:  ADD YOUR BIRTHDAY  -->
         <div class="add-birthday-block">
 
             <div class="add-birthday-advertising add-birthday-advertising-left"></div>
 
+            <div class="card-style add-birthday-wrap">
+                <form onsubmit="return onSubmit(this)" class="add-birthday-content" id="form-add-birthday">
+                    <h2>Введите вашу дату рождения:</h2>
 
-                <div class="card-style add-birthday-wrap">
-                    <form onsubmit="return onSubmit(this)" class="add-birthday-content" id="form-add-birthday">
-                        <h2>Введите вашу дату рождения:</h2>
+                    <div class="birthday-inputs-block">
+                        <input type="number"
+                               class="input-birthday input-birthday-day"
+                               placeholder="День"
+                               id="day"
+                               name="day"
+                               required
+                               min="0"
+                               max="31"
+                        >
+                        <input type="number"
+                               class="input-birthday input-birthday-month"
+                               placeholder="Месяц"
+                               id="month"
+                               name="month"
+                               required
+                               min="0"
+                               max="12"
+                        >
+                        <input type="number"
+                               class="input-birthday input-birthday-year"
+                               placeholder="Год"
+                               id="year"
+                               name="year"
+                               required
+                               min="1900"
+                        >
+                    </div>
 
-                        <div class="birthday-inputs-block">
-                            <input type="number"
-                                   class="input-birthday input-birthday-day"
-                                   placeholder="День"
-                                   id="day"
-                                   name="day"
-                                   required
-                                   min="0"
-                                   max="31"
-                            >
-                            <input type="number"
-                                   class="input-birthday input-birthday-month"
-                                   placeholder="Месяц"
-                                   id="month"
-                                   name="month"
-                                   required
-                                   min="0"
-                                   max="12"
-                            >
-                            <input type="number"
-                                   class="input-birthday input-birthday-year"
-                                   placeholder="Год"
-                                   id="year"
-                                   name="year"
-                                   required
-                                   min="1900"
-                            >
-                        </div>
+                    <div class="submit-buttons-block">
+                        <input type="submit"
+                               value="Рассчитать"
+                               class="buttons-style submit-button"
+                               id="submit-button"
+                        >
+                        <input type="button"
+                               value="Сбросить"
+                               class="buttons-style reset-button"
+                               id="reset-button"
+                               onclick="onReset(this)"
+                        >
+                    </div>
 
-                        <div class="submit-buttons-block">
-                            <input type="submit"
-                                   value="Рассчитать"
-                                   class="buttons-style submit-button"
-                                   id="submit-button"
-                            >
-                            <input type="button"
-                                   value="Сбросить"
-                                   class="buttons-style reset-button"
-                                   id="reset-button"
-                                   onclick="onReset(this)"
-                            >
-                        </div>
+                </form>
+            </div>
 
-                    </form>
-                </div>
-
-                <div class="add-birthday-advertising add-birthday-advertising-right"></div>
-
-
+            <div class="add-birthday-advertising add-birthday-advertising-right"></div>
 
         </div>
 
+        <!--   BLOCK: SHOW RESULT   -->
         <div class="result" id="result">
 
             <div class="result-chart-block">
@@ -225,6 +226,7 @@
 
         </div>
 
+        <!--   BLOCK: ABOUT ALGORITHM   -->
         <div class="about-algorithm-block">
 
             <div class="about-physical-and-emotional">
@@ -291,9 +293,6 @@
             </div>
 
         </div>
-
-
-
 
 
     </main>
