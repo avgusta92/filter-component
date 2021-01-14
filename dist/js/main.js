@@ -26,6 +26,7 @@ function init() {
     //НАЖИМАЕМ КНОПКУ SUBMIT
     document.getElementById("submit-button").click();
 
+    addAutoFocusingNextInput();
 }
 
 
@@ -85,6 +86,31 @@ function onResultView(value) {
         table.style.display = 'table';
     }
 
+}
+
+// ДОБАВЛЯЮ ФУНКЦИЮ КОТОРАЯ БУДЕТ АВТОМАТИЧЕСКИ ФОКУСИРОВАТЬ СЛЕДУЮЩИЙ ИНПУТ
+function addAutoFocusingNextInput() {
+    const container = document.getElementsByClassName("birthday-inputs-block")[0];
+    container.onkeyup = function(e) {
+        const target = e.srcElement || e.target;
+        const maxLengthRaw = target.attributes["maxlength"];
+        if (!maxLengthRaw) {
+            return;
+        }
+        const maxLength = parseInt(maxLengthRaw.value, 10);
+        const myLength = target.value.length;
+        if (myLength >= maxLength) {
+            let next = target;
+            while (next = next.nextElementSibling) {
+                if (next == null)
+                    break;
+                if (next.tagName.toLowerCase() === "input") {
+                    next.focus();
+                    break;
+                }
+            }
+        }
+    }
 }
 
 function calculate(dateOfBirth) {
