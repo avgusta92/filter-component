@@ -91,7 +91,7 @@ function calculate(dateOfBirth) {
     const dateNow = new Date();
     const currentDay = new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate());
 
-    const daysFromBirth = ((currentDay - dateOfBirth) / 24 / 60 / 60 / 1000) + 1;
+    const daysFromBirth = Math.round((currentDay - dateOfBirth) / 24 / 60 / 60 / 1000) + 1;
 
     let labels = [];
     let physical = [];
@@ -100,9 +100,9 @@ function calculate(dateOfBirth) {
     for (let i = 0; i < 31; i++) {
         labels.push(new Date(+currentDay + (i * 24 * 60 * 60 * 1000)));
 
-        physical.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth + i) / 23)) * 100));
-        emotional.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth + i) / 28)) * 100));
-        intellectual.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth + i) / 33)) * 100));
+        physical.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth % 23 + i) / 23)) * 100));
+        emotional.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth % 28 + i) / 28)) * 100));
+        intellectual.push(Math.round((Math.sin(2 * Math.PI * (daysFromBirth % 33 + i) / 33)) * 100));
     }
 
 
@@ -160,7 +160,11 @@ function calculate(dateOfBirth) {
     dateToday.innerHTML = moment(new Date()).format('LL');
 
     let headingRecommendationPhysical = document.getElementById('result-recommendation-physical');
-    headingRecommendationPhysical.innerHTML = physical[1] + '%';
+    headingRecommendationPhysical.innerHTML = physical[0] + '%';
+
+    let headingRecommendationPhysicalDays = document.getElementById('result-recommendation-physical-days');
+    headingRecommendationPhysicalDays.innerText = daysFromBirth % 23;
+
 
     if(physical[1] < 0) {
         headingRecommendationPhysical.style.color = redColor;
@@ -169,7 +173,10 @@ function calculate(dateOfBirth) {
     }
 
     let headingRecommendationEmotional = document.getElementById('result-recommendation-emotional');
-    headingRecommendationEmotional.innerHTML = emotional[1] + '%';
+    headingRecommendationEmotional.innerHTML = emotional[0] + '%';
+
+    let headingRecommendationEmotionalDays = document.getElementById('result-recommendation-emotional-days');
+    headingRecommendationEmotionalDays.innerText = daysFromBirth % 28;
 
     if(emotional[1] < 0) {
         headingRecommendationEmotional.style.color = redColor;
@@ -178,7 +185,10 @@ function calculate(dateOfBirth) {
     }
 
     let headingRecommendationIntellectual = document.getElementById('result-recommendation-intellectual');
-    headingRecommendationIntellectual.innerHTML = intellectual[1] + '%';
+    headingRecommendationIntellectual.innerHTML = intellectual[0] + '%';
+
+    let headingRecommendationIntellectualDays = document.getElementById('result-recommendation-intellectual-days');
+    headingRecommendationIntellectualDays.innerText = daysFromBirth % 33;
 
     if(intellectual[1] < 0) {
         headingRecommendationIntellectual.style.color = redColor;

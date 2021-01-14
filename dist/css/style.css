@@ -141,7 +141,6 @@ h3 {
 
 .submit-button {
   flex-grow: 1;
-  background: #00c2ff;
   background: linear-gradient(45deg, #00c2ff 0%, #0088ff 40%);
   border: none;
   color: white;
@@ -149,7 +148,7 @@ h3 {
 
 .reset-button {
   flex-grow: 1;
-  background-color: white;
+  background: white;
   border: 2px solid #0088FF;
   color: #0088FF; }
 
