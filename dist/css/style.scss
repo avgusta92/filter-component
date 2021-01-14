@@ -152,21 +152,6 @@ h3{
   display: flex;
 }
 
-.input-wrap{
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.input-wrap-day, .input-wrap-month{
-  margin-right: 1.25rem;
-}
-
-.input-label{
-  font-size: 0.75rem;
-  margin-bottom: 0.25rem;
-  color: #C8C8C8;
-}
 
 .input-birthday {
   border-radius: 3px;
@@ -176,6 +161,11 @@ h3{
   font-weight: 300;
   color: rgba(0, 0, 0, 0.637);
   width: 100%;
+  flex-grow: 1;
+}
+
+.input-birthday-day, .input-birthday-month{
+  margin-right: 1.25rem;
 }
 
 .input-birthday::placeholder {
@@ -446,7 +436,7 @@ h3{
   .table {
     td, th {
       width: 25%;
-      font-size: 0.75rem;
+      font-size: 0.9rem;
     }
 
     .table-description-date, .table-data-date {
@@ -458,9 +448,6 @@ h3{
 
 
 @media (max-width:800px) {
-  //.header-text-wrap{
-  //  width: 80%;
-  //}
 
   html{
     font-size: 14px;
@@ -483,41 +470,16 @@ h3{
 
 
 @media (max-width: 700px) {
-  html{
-    font-size: 12px;
-  }
 
   .result-view{
     span, button{
       font-size: 1rem;
     }
   }
-}
-
-
-@media (max-width: 580px) {
-  html{
-    font-size: 10px;
-  }
-
-  .chart {
-    height: 40vh !important;
-  }
-
-}
-
-@media (max-width: 480px) {
-  .main-content, .nav-bar-wrap{
-    width: 90%;
-  }
-
-  .header-text-wrap{
-    width: 80%;
-  }
 
   .table {
     th {
-      font-size: 6px;
+      font-size: 10px;
     }
 
     td, th {
@@ -530,9 +492,67 @@ h3{
     }
 
     .table-data-date{
-      font-size: 6px;
+      font-size: 10px;
     }
 
+  }
+
+}
+
+
+
+
+@media (max-width: 540px) {
+
+  .main-content, .nav-bar-wrap{
+    width: 90%;
+  }
+
+  .header-text-wrap{
+    width: 80%;
+  }
+
+  .chart {
+    height: 40vh;
+  }
+
+  .table {
+    th {
+      font-size: 9px;
+    }
+
+    .table-data-date{
+      font-size: 9px;
+    }
+
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .card-style {
+    padding: 2rem;
+  }
+
+
+  .table {
+    th {
+      font-size: 8px;
+    }
+
+    .table-data-date{
+      font-size: 8px;
+    }
+
+  }
+
+  .input-birthday-day, .input-birthday-month{
+    margin-right: 0.75rem;
+  }
+
+  .submit-button {
+    margin-right: 0.75rem;
   }
 
 }
@@ -544,4 +564,30 @@ h3{
   .button-result-view-wrap{
     margin-top: 0.5rem;
   }
+
+  .birthday-inputs-block {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  .input-birthday{
+    padding: 1rem;
+  }
+
+  .input-birthday-day, .input-birthday-month{
+    margin-right: 0.5rem;
+  }
+
+  .submit-button {
+    margin-right: 0.5rem;
+  }
+
+  .buttons-style{
+    padding: 1rem;
+  }
+
+
 }
