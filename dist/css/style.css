@@ -332,6 +332,8 @@ h3 {
     width: 90%; }
   .header-text-wrap {
     width: 80%; }
+  .chart {
+    height: 40vh; }
   .table th {
     font-size: 9px; }
   .table .table-data-date {
