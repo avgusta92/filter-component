@@ -137,7 +137,7 @@ h3 {
   padding: 1.25rem;
   border-radius: 4px;
   font-size: 1rem;
-  font-weight: 400; }
+  font-weight: 600; }
 
 .submit-button {
   flex-grow: 1;
@@ -178,14 +178,15 @@ h3 {
   background-color: transparent;
   cursor: pointer;
   border: none;
-  color: #B9B9B9; }
+  color: #B9B9B9;
+  font-weight: 400; }
 
 .button-result-view:focus {
   outline: 0; }
 
 .button-result-view-selected, .button-result-view:hover {
-  border-bottom: 1.4px solid #0190FF;
-  color: #0190FF; }
+  border-bottom: 1.4px solid #0088FF;
+  color: #0088FF; }
 
 .chart {
   height: 50vh; }
