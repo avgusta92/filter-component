@@ -1,4 +1,9 @@
 $primary-color: #0088FF;
+$secondary-color: #0d64c2;
+$primary-text-color: #495057;
+$secondary-text-color: #a3a3a3;
+
+$primary-gradient: linear-gradient(45deg, rgb(13, 100, 194) 0%, rgba(0,136,255,1) 60%);
 
 /* Обнулить */
 * {
@@ -23,8 +28,9 @@ a {
 
 /* Общие стили  для всей страницы */
 html {
+  scroll-behavior: smooth;
   font-size: 16px;
-  color: #495057;
+  color: $primary-text-color;
   font-family:
           -apple-system,
           BlinkMacSystemFont,
@@ -69,12 +75,17 @@ h3{
   padding: 3rem;
 }
 
-.add-birthday-block, .result-chart-block, .result-recommendation-block, .about-algorithm-block {
+.section-calculator, .result-chart-block, .result-recommendation-block, .section-about, .section-cycles {
   margin-top: 2rem;
 }
 
 
 /* Верстка */
+.nav-bar-wrap, .main{
+  width: 80%;
+  margin: 0 auto;
+}
+
 .nav-bar{
   height: 50px;
   width: 100%;
@@ -84,13 +95,27 @@ h3{
     text-decoration: none;
   }
 }
-.nav-bar-wrap, .main-content{
-  width: 80%;
-  margin: 0 auto;
+
+.nav-bar-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+}
+
+.menu__item{
+  margin-left: 2rem;
+  font-size: 0.8rem;
+  color: $primary-text-color;
+}
+.menu__item:hover {
+  color: $secondary-color;
 }
 
 .heading-logo-wrap{
-  padding: 10px;
   display: flex;
   align-items: center;
 }
@@ -103,21 +128,21 @@ h3{
 
 .heading-company-name{
   font-weight: 800;
-  color: #495057;
+  color: $primary-text-color;
 }
 
 .header-text{
   text-align: center;
   width: 100%;
-  background: rgb(0,194,255);
-  background: linear-gradient(45deg, rgba(0,194,255,1) 0%, rgba(0,136,255,1) 40%);
+  background: $primary-color;
+  background: $primary-gradient;
 }
 
 .header-text-wrap{
   color: white;
   width: 60%;
-  padding-bottom: 3.75rem;
-  padding-top: 3.75rem;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
   margin: 0 auto;
 }
 
@@ -126,7 +151,7 @@ h3{
 }
 
 
-.add-birthday-block{
+.section-calculator{
   display: flex;
 }
 
@@ -160,7 +185,7 @@ h3{
   font-size: 1rem;
   padding: 1.25rem;
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.637);
+  color: $primary-text-color;
   width: 100%;
   flex-grow: 1;
 }
@@ -189,8 +214,8 @@ h3{
 
 .submit-button{
   flex-grow: 1;
-  background: rgb(0,194,255);
-  background: linear-gradient(45deg, rgba(0,194,255,1) 0%, rgba(0,136,255,1) 40%);
+  background: $primary-color;
+  background:  $primary-gradient;
   border: none;
   color: white;
   margin-right: 1.25rem;
@@ -203,7 +228,7 @@ h3{
   color: $primary-color;
 }
 
-.result{
+.section-result{
   display: none;
   flex-direction: column;
 }
@@ -236,7 +261,7 @@ h3{
   background-color: transparent;
   cursor: pointer;
   border: none;
-  color: #B9B9B9;
+  color: $secondary-text-color;
   font-weight: 400;
 }
 
@@ -245,8 +270,8 @@ h3{
 }
 
 .button-result-view-selected, .button-result-view:hover{
-  border-bottom: 1.4px solid $primary-color;
-  color: $primary-color;
+  border-bottom: 1.4px solid $secondary-color;
+  color: $secondary-color;
 }
 
 
@@ -284,7 +309,7 @@ h3{
   th {
     font-size: 1rem;
     font-weight: 600;
-    color: #495057;
+    color: $primary-text-color;
     text-align: center;
   }
 
@@ -298,7 +323,7 @@ h3{
 
   td {
     font-size: 1rem;
-    color: #495057;
+    color: $primary-text-color;
   }
 
 }
@@ -332,7 +357,7 @@ h3{
 
 
 
-.about-algorithm-block{
+.section-cycles{
   display: flex;
 }
 
@@ -361,7 +386,7 @@ h3{
 }
 
 
-.footer-block{
+.footer{
   width: 100%;
   height: 100px;
   background-color: #495057;
@@ -404,7 +429,7 @@ h3{
     display: none;
   }
 
-  .about-algorithm-block{
+  .section-about{
     flex-direction: column;
   }
 
@@ -455,7 +480,7 @@ h3{
     font-size: 14px;
   }
 
-  .add-birthday-block{
+  .section-calculator{
     flex-direction: column;
   }
 
@@ -506,7 +531,7 @@ h3{
 
 @media (max-width: 540px) {
 
-  .main-content, .nav-bar-wrap{
+  .main, .nav-bar-wrap{
     width: 90%;
   }
 

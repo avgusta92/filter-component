@@ -18,6 +18,7 @@ a {
 
 /* Общие стили  для всей страницы */
 html {
+  scroll-behavior: smooth;
   font-size: 16px;
   color: #495057;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
@@ -47,10 +48,14 @@ h3 {
   border-radius: 4px;
   padding: 3rem; }
 
-.add-birthday-block, .result-chart-block, .result-recommendation-block, .about-algorithm-block {
+.section-calculator, .result-chart-block, .result-recommendation-block, .section-about, .section-cycles {
   margin-top: 2rem; }
 
 /* Верстка */
+.nav-bar-wrap, .main {
+  width: 80%;
+  margin: 0 auto; }
+
 .nav-bar {
   height: 50px;
   width: 100%;
@@ -58,12 +63,23 @@ h3 {
   .nav-bar a {
     text-decoration: none; }
 
-.nav-bar-wrap, .main-content {
-  width: 80%;
-  margin: 0 auto; }
+.nav-bar-wrap {
+  display: flex;
+  justify-content: space-between; }
+
+.menu {
+  display: flex;
+  list-style: none; }
+
+.menu__item {
+  margin-left: 2rem;
+  font-size: 0.8rem;
+  color: #495057; }
+
+.menu__item:hover {
+  color: #0d64c2; }
 
 .heading-logo-wrap {
-  padding: 10px;
   display: flex;
   align-items: center; }
 
@@ -79,20 +95,20 @@ h3 {
 .header-text {
   text-align: center;
   width: 100%;
-  background: #00c2ff;
-  background: linear-gradient(45deg, #00c2ff 0%, #0088ff 40%); }
+  background: #0088FF;
+  background: linear-gradient(45deg, #0d64c2 0%, #0088ff 60%); }
 
 .header-text-wrap {
   color: white;
   width: 60%;
-  padding-bottom: 3.75rem;
-  padding-top: 3.75rem;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
   margin: 0 auto; }
 
 .header-text-about {
   margin-top: 2rem; }
 
-.add-birthday-block {
+.section-calculator {
   display: flex; }
 
 .add-birthday-advertising {
@@ -119,7 +135,7 @@ h3 {
   font-size: 1rem;
   padding: 1.25rem;
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.637);
+  color: #495057;
   width: 100%;
   flex-grow: 1; }
 
@@ -141,8 +157,8 @@ h3 {
 
 .submit-button {
   flex-grow: 1;
-  background: #00c2ff;
-  background: linear-gradient(45deg, #00c2ff 0%, #0088ff 40%);
+  background: #0088FF;
+  background: linear-gradient(45deg, #0d64c2 0%, #0088ff 60%);
   border: none;
   color: white;
   margin-right: 1.25rem; }
@@ -153,7 +169,7 @@ h3 {
   border: 2px solid #0088FF;
   color: #0088FF; }
 
-.result {
+.section-result {
   display: none;
   flex-direction: column; }
 
@@ -178,15 +194,15 @@ h3 {
   background-color: transparent;
   cursor: pointer;
   border: none;
-  color: #B9B9B9;
+  color: #a3a3a3;
   font-weight: 400; }
 
 .button-result-view:focus {
   outline: 0; }
 
 .button-result-view-selected, .button-result-view:hover {
-  border-bottom: 1.4px solid #0088FF;
-  color: #0088FF; }
+  border-bottom: 1.4px solid #0d64c2;
+  color: #0d64c2; }
 
 .chart {
   height: 50vh; }
@@ -240,7 +256,7 @@ h3 {
   .result-recommendation-text h3 {
     margin-bottom: 0.25rem; }
 
-.about-algorithm-block {
+.section-cycles {
   display: flex; }
 
 .about-physical-and-emotional {
@@ -260,7 +276,7 @@ h3 {
 .about-content p {
   margin-top: 1rem; }
 
-.footer-block {
+.footer {
   width: 100%;
   height: 100px;
   background-color: #495057;
@@ -281,7 +297,7 @@ h3 {
     width: 70%; }
   .add-birthday-advertising-left {
     display: none; }
-  .about-algorithm-block {
+  .section-about {
     flex-direction: column; }
   .about-physical-and-emotional {
     margin-right: 0;
@@ -307,7 +323,7 @@ h3 {
 @media (max-width: 800px) {
   html {
     font-size: 14px; }
-  .add-birthday-block {
+  .section-calculator {
     flex-direction: column; }
   .add-birthday-advertising-right {
     margin-left: 0;
@@ -329,7 +345,7 @@ h3 {
     font-size: 10px; } }
 
 @media (max-width: 540px) {
-  .main-content, .nav-bar-wrap {
+  .main, .nav-bar-wrap {
     width: 90%; }
   .header-text-wrap {
     width: 80%; }

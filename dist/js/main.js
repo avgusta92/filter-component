@@ -2,6 +2,15 @@ let greenColor = "#279B4F";
 let redColor = "#DF1152";
 let bluColor = "#455FC8";
 
+// console.log(window.location.href)
+
+// if(window.location.href === ""){
+//     window.onbeforeunload = function(event) {
+//         window.scrollTo(0, 0)
+//     }
+// }
+
+
 init();
 
 function init() {
@@ -28,18 +37,31 @@ function init() {
 
     // ДОБАВЛЯЮ ФУНКЦИЮ КОТОРАЯ БУДЕТ АВТОМАТИЧЕСКИ ФОКУСИРОВАТЬ СЛЕДУЮЩИЙ ИНПУТ
     addAutoFocusingNextInput();
+
 }
 
+// function up() {
+//     let t;
+//     let top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+//     if(top > 0) {
+//         window.scrollBy(0,-100);
+//         t = setTimeout('up()',20);
+//     } else clearTimeout(t);
+//     return false;
+// }
 
-function onSubmit(formValue) {
+
+function onSubmit(event) {
+    let form = document.getElementById('form-add-birthday')
+
     // ПОКАЗЫВАЮ БЛОК С РЕЗУЛЬТАТОМ
-    const resultEl = document.getElementById('result');
+    const resultEl = document.getElementById('sectionResult');
     resultEl.style.display = 'flex';
 
     // ДОСТАЮ ВВЕДЕННЫЕ ДАННЫЕ ИЗ ФОРМЫ
-    const day = formValue.elements['day'].value;
-    const month = formValue.elements['month'].value;
-    const year = formValue.elements['year'].value;
+    const day = form.elements['day'].value;
+    const month = form.elements['month'].value;
+    const year = form.elements['year'].value;
 
     //СЧИТАЕМ И ОТРИСОВЫВАЕМ (ГРАФИК И ТАБЛИЦУ)
     const newDate = new Date(year, month - 1, day);
@@ -50,7 +72,9 @@ function onSubmit(formValue) {
     localStorage.setItem('month', month);
     localStorage.setItem('year', year);
 
-    return false;
+    //СКРОЛЛ ДО SECTION RESULT
+    resultEl.scrollIntoView();
+
 }
 
 function onReset() {
@@ -63,7 +87,7 @@ function onReset() {
     document.getElementById("form-add-birthday").reset();
 
     // ПРЯЧУ БЛОК С РЕЗУЛЬТАТОМ
-    const resultEl = document.getElementById('result');
+    const resultEl = document.getElementById('sectionResult');
     resultEl.style.display = 'none';
 }
 
