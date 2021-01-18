@@ -158,7 +158,7 @@ function calculate(dateOfBirth) {
 
     // УДАЛИТЬ ТАБЛИЦУ
     let tbodyTable = document.getElementById('tbody-table').children;
-    for (let item = tbodyTable.length - 1; item >= 1; item--) {
+    for (let item = tbodyTable.length - 1; item >= 0; item--) {
         tbodyTable[item].remove();
     }
 
