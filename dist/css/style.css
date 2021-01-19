@@ -16,6 +16,9 @@ h4,
 a {
   margin: 0; }
 
+a {
+  text-decoration: none; }
+
 /* Общие стили  для всей страницы */
 html {
   scroll-behavior: smooth;
@@ -51,21 +54,22 @@ h3 {
 .section-calculator, .result-chart-block, .result-recommendation-block, .section-about, .section-cycles {
   margin-top: 2rem; }
 
-/* Верстка */
 .nav-bar-wrap, .main {
   width: 80%;
   margin: 0 auto; }
 
+/* Верстка */
 .nav-bar {
   height: 50px;
   width: 100%;
   background-color: white; }
-  .nav-bar a {
-    text-decoration: none; }
 
 .nav-bar-wrap {
   display: flex;
   justify-content: space-between; }
+
+.ham-button {
+  display: none; }
 
 .menu {
   display: flex;
@@ -221,10 +225,7 @@ h3 {
     padding: 1rem; }
   .table thead {
     width: 100%;
-    background: #F5F5F5;
-    background: -moz-linear-gradient(top, #f7f7f7 0%, #f6f6f6 66%, #F5F5F5 100%);
-    background: -webkit-linear-gradient(top, #f7f7f7 0%, #f6f6f6 66%, #F5F5F5 100%);
-    background: linear-gradient(to bottom, #f7f7f7 0%, #f6f6f6 66%, #F5F5F5 100%); }
+    background: #F5F5F5; }
   .table th {
     font-size: 1rem;
     font-weight: 600;
@@ -330,6 +331,53 @@ h3 {
     margin-top: 2rem;
     width: 100%;
     height: 120px; } }
+
+@media (max-width: 720px) {
+  .nav-bar-wrap {
+    padding: 10px; }
+  .ham-button {
+    display: flex;
+    z-index: 1000;
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url("https://ljc-dev.github.io/testing0/ham.svg");
+    background-size: 100%; }
+  .menu {
+    display: none;
+    transform: translateY(-100%); }
+  .menu ul {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center; }
+  .menu__item {
+    margin-left: 0;
+    color: #495057;
+    padding-bottom: 10px;
+    font-size: 2rem; }
+  .menu ul li a:hover, .menu ul li a:focus {
+    border-bottom: 2px solid white; }
+  .showNav {
+    transform: translateY(0);
+    display: block;
+    padding: 3rem;
+    position: absolute;
+    top: -14px;
+    left: 0;
+    background: white;
+    width: 100vw;
+    height: 30vh;
+    overflow: hidden;
+    color: white;
+    transition: transform 0.2s ease; }
+  .showClose {
+    background-image: url("https://ljc-dev.github.io/testing0/ham-close.svg"); } }
 
 @media (max-width: 700px) {
   .result-view span, .result-view button {

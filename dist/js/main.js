@@ -2,15 +2,6 @@ let greenColor = "#279B4F";
 let redColor = "#DF1152";
 let bluColor = "#455FC8";
 
-// console.log(window.location.href)
-
-// if(window.location.href === ""){
-//     window.onbeforeunload = function(event) {
-//         window.scrollTo(0, 0)
-//     }
-// }
-
-
 init();
 
 function init() {
@@ -40,15 +31,6 @@ function init() {
 
 }
 
-// function up() {
-//     let t;
-//     let top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
-//     if(top > 0) {
-//         window.scrollBy(0,-100);
-//         t = setTimeout('up()',20);
-//     } else clearTimeout(t);
-//     return false;
-// }
 
 
 function onSubmit(event) {
@@ -335,3 +317,25 @@ function addLineWithLineChartType() {
         }
     });
 }
+
+
+let nawMenu = document.querySelector(".menu")
+let hamButton = document.querySelector(".ham-button")
+
+// toggles hamburger menu in and out when clicking on the hamburger
+function toggleHamburger(){
+    nawMenu.classList.toggle("showNav")
+    hamButton.classList.toggle("showClose")
+}
+
+// hamButton.addEventListener("click", toggleHamburger)
+
+// toggle when clicking on links
+
+let menuLinks = document.querySelectorAll(".menu__item")
+menuLinks.forEach(
+    function(menuLink) {
+        menuLink.addEventListener("click", toggleHamburger)
+    }
+)
+
