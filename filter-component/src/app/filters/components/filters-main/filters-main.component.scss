@@ -1,0 +1,23 @@
+@import "../../../../general-styles/general-styles";
+
+.Filters-main {
+  padding: 24px 24px 26px;
+
+  &__heading {
+    @extend  %text-light-gray;
+    margin-bottom: 24px - 3.5px;
+  }
+
+  &__input-search {
+    margin-bottom: 12px;
+  }
+
+  &__input-where {
+    margin-bottom: 24px;
+  }
+
+  &__divider {
+    border-bottom: 1px solid $gray-light-color-2;
+    margin-bottom: 24px;
+  }
+}

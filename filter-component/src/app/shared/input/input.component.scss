@@ -1,0 +1,18 @@
+@import "../../../general-styles/general-styles";
+
+.Input {
+  width: 100%;
+
+  &__label {
+    @extend %text-light-gray;
+  }
+
+  &__icon {
+    color: $gray-light-color-1;
+  }
+
+  ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0;
+    margin: 0;
+  }
+}

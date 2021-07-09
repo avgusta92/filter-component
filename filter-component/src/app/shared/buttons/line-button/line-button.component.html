@@ -1,0 +1,10 @@
+<button
+  mat-button
+  [ngClass] = "{
+    'line-button': true,
+    'line-button__gray': (buttonColor  === 'gray'),
+    'line-button__blue': (buttonColor  === 'blue')
+  }"
+>
+  {{buttonText}}
+</button>

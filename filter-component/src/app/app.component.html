@@ -1,0 +1,39 @@
+<div class="App">
+  <nav class="App__nav-bar">
+    <button
+      mat-button
+      routerLink="hello-page"
+    >
+      Hello page
+    </button>
+    <button
+      mat-button
+      routerLink="second-page"
+    >
+      Second page
+    </button>
+
+    <button mat-button (click)="onOpenSideBar()">Filters</button>
+
+  </nav>
+
+  <div class="App__content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <mat-sidenav-container
+    [ngClass] = "{
+      App__sideBar: true,
+      App__sideBar__opened: sideBarState,
+      App__sideBar__closed: !sideBarState
+    }"
+    (backdropClick)="onCloseSideBar()"
+  >
+
+    <mat-sidenav #sidenav (keydown.escape)="onCloseSideBar()" disableClose>
+      <app-filters></app-filters>
+    </mat-sidenav>
+
+  </mat-sidenav-container>
+</div>
+

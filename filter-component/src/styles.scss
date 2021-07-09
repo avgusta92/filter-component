@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'src/my-theme';
+@import "src/general-styles/general-styles";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #ececec;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+  padding: 0;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+

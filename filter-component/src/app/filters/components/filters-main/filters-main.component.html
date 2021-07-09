@@ -1,0 +1,38 @@
+<main class="Filters-main">
+  <div class="Filters-main__search-block">
+    <h3 class="Filters-main__heading">Search by title and location</h3>
+    <div class="Filters-main__input-search">
+      <app-input
+        [inputIcon]="'search'"
+        [labelValue]="'What'"
+        [placeholderValue]="'Write job title or keyword'"
+      ></app-input>
+    </div>
+
+    <div class="Filters-main__input-where">
+      <app-input
+        [inputIcon]="'search'"
+        [labelValue]="'Where'"
+        [placeholderValue]="'Write location'"
+      ></app-input>
+    </div>
+  </div>
+
+  <div class="Filters-main__divider"></div>
+
+  <div class="Filters-main__search-block">
+    <h3 class="Filters-main__heading">Category</h3>
+    <app-input-with-ships
+      [inputIcon]="'search'"
+      [labelValue]="'Search category'"
+      [placeholderValue]="'Write or choose categories'"
+    ></app-input-with-ships>
+  </div>
+
+  <div class="Filters-main__job-type-block">
+    <h3 class="Filters-main__heading">Job Type</h3>
+    <app-checkbox [typeValue]="'One time'" [sumOfThisType]="5216"></app-checkbox>
+    <app-checkbox [typeValue]="'Part time'" [sumOfThisType]="1256"></app-checkbox>
+    <app-checkbox [typeValue]="'Full time'" [sumOfThisType]="35324"></app-checkbox>
+  </div>
+</main>

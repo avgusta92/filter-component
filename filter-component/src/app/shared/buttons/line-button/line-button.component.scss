@@ -1,0 +1,12 @@
+@import "../../../../general-styles/general-styles";
+
+.line-button {
+
+  &__gray {
+    @extend %text-light-gray;
+  }
+
+  &__blue {
+    @extend %text-accent-blue;
+  }
+}

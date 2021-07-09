@@ -1,0 +1,77 @@
+@import "src/general-styles/vars";
+
+%font {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  @extend %font;
+}
+
+html {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+%title-h1 {
+  @extend %font;
+  margin: 0;
+  color: $gray-dark-color;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+%title-h2 {
+  @extend %font;
+  margin: 0;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 300;
+}
+
+%title-h2-middle-gray {
+  @extend %title-h2;
+  color: $gray-middle-color;
+}
+
+%title-h2-light-gray {
+  @extend %title-h2;
+  color: $gray-light-color-1;
+}
+
+%text {
+  @extend %font;
+  margin: 0;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 300;
+}
+
+%text-middle-gray {
+  @extend %text;
+  color: $gray-middle-color;
+}
+
+%text-light-gray {
+  @extend %text;
+  color: $gray-light-color-1;
+}
+
+%text-accent {
+  @extend %font;
+  margin: 0;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 400;
+}
+
+%text-accent-blue {
+  @extend %text-accent;
+  color: $accent-color-light-blue;
+}
+
+%text-accent-white {
+  @extend %text-accent;
+  color: $accent-color-light-blue;
+}
